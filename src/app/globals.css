@@ -1,0 +1,178 @@
+@import "tailwindcss";
+
+@theme {
+  --color-sky: #398bcb;
+  --color-sky-deep: #2b74b0;
+  --color-sky-dark: #1f5d91;
+  --color-sky-soft: #ddeffa;
+  --color-sky-mist: #eef7fd;
+  --color-sun: #ffd76a;
+  --color-sun-deep: #f5b935;
+  --color-sun-soft: #fff4d1;
+  --color-mint: #d9f4e1;
+  --color-mint-deep: #5bbf86;
+  --color-mint-dark: #2f8a58;
+  --color-coral: #ff9b85;
+  --color-ink: #26374a;
+  --color-ink-soft: #4d6077;
+  --color-wa: #16854a;
+  --color-wa-bright: #25d366;
+
+  --font-sans: var(--font-nunito), "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-display: var(--font-nunito), "Segoe UI", system-ui, sans-serif;
+
+  --shadow-soft: 0 10px 30px -12px rgb(38 55 74 / 0.18);
+  --shadow-card: 0 18px 40px -20px rgb(38 55 74 / 0.28);
+  --shadow-float: 0 24px 60px -24px rgb(43 116 176 / 0.45);
+
+  --animate-float: float 7s ease-in-out infinite;
+  --animate-float-slow: float 10s ease-in-out infinite;
+  --animate-drift: drift 16s ease-in-out infinite;
+  --animate-spin-slow: spin 22s linear infinite;
+  --animate-twinkle: twinkle 3.2s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -12px, 0);
+  }
+}
+
+@keyframes drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(18px, -6px, 0);
+  }
+}
+
+@keyframes twinkle {
+  0%,
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(0.82) rotate(18deg);
+    opacity: 0.75;
+  }
+}
+
+/* --- Әрқашан ашық тақырып --- */
+:root {
+  color-scheme: only light;
+  --nav-h: 64px;
+  background-color: #ffffff;
+  color: #26374a;
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --nav-h: 72px;
+  }
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  scroll-behavior: smooth;
+  overflow-x: clip;
+}
+
+body {
+  background-color: #ffffff;
+  color: #26374a;
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Бөлімге өткенде тақырып sticky navbar астында қалмауы үшін */
+section[id] {
+  scroll-margin-top: var(--nav-h);
+}
+#home {
+  scroll-margin-top: 0;
+}
+
+::selection {
+  background: #ffd76a;
+  color: #26374a;
+}
+
+:focus-visible {
+  outline: 3px solid #398bcb;
+  outline-offset: 3px;
+  border-radius: 10px;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+input,
+select,
+textarea,
+button {
+  color-scheme: only light;
+}
+
+/* Органикалық фоторамкалар */
+.shape-blob-1 {
+  border-radius: 62% 38% 46% 54% / 46% 58% 42% 54%;
+}
+.shape-blob-2 {
+  border-radius: 42% 58% 60% 40% / 54% 40% 60% 46%;
+}
+.shape-blob-3 {
+  border-radius: 50% 50% 38% 62% / 60% 44% 56% 40%;
+}
+.shape-arch {
+  border-radius: 999px 999px 32px 32px;
+}
+.shape-leaf {
+  border-radius: 48px 8px 48px 8px;
+}
+.shape-pebble {
+  border-radius: 34px 56px 30px 60px;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+.text-pretty {
+  text-wrap: pretty;
+}
+
+.bg-dots {
+  background-image: radial-gradient(rgb(57 139 203 / 0.16) 1.5px, transparent 1.5px);
+  background-size: 22px 22px;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  scrollbar-width: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
