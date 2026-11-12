@@ -33,7 +33,8 @@ export const map = {
   embedUrl: null as string | null,
 };
 
-export const navItems = [
+/** Беттегі барлық бөлімдер (id-лер). «Басты бет» мәзірде жоқ — логотип арқылы оралады. */
+export const sections = [
   { id: "home", label: "Басты бет" },
   { id: "about", label: "Біз туралы" },
   { id: "groups", label: "Топтар" },
@@ -43,7 +44,10 @@ export const navItems = [
   { id: "contacts", label: "Байланыс" },
 ] as const;
 
-export type SectionId = (typeof navItems)[number]["id"];
+export type SectionId = (typeof sections)[number]["id"];
+
+/** Мәзір пункттері (Desktop, Mobile, footer) */
+export const navItems = sections.filter((s) => s.id !== "home");
 
 export const hero = {
   badge: "Қош келдіңіз!",
@@ -88,7 +92,8 @@ export const groupsSection = {
 export const groups = [
   {
     id: 1,
-    title: "1-топ",
+    title: "«Жұлдыз»",
+    level: "Ересек топ",
     description:
       "Жылы әрі тыныш ортада балалар күн тәртібіне үйреніп, ойын арқылы жаңа дағдыларды бірге меңгереді.",
     tags: ["Ойын", "Қамқорлық", "Достық"],
@@ -96,7 +101,8 @@ export const groups = [
   },
   {
     id: 2,
-    title: "2-топ",
+    title: "«Ботақан»",
+    level: "Орта топ",
     description:
       "Шығармашылық пен танымдық әрекеттер арқылы балалар қиялын дамытып, достарымен бірге жаңа нәрселерді ашады.",
     tags: ["Шығармашылық", "Таным", "Белсенділік"],

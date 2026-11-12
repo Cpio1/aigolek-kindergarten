@@ -19,6 +19,7 @@ const icons: Record<SectionId, LucideIcon> = {
   gallery: Images,
   contacts: Phone,
 };
+// +1: «Басты бет» алынғаннан кейін де әр пункт өз бұрынғы түсін сақтайды
 const tones = ["bg-sky-soft text-sky-deep", "bg-[#ffe9e3] text-[#b5513c]", "bg-mint text-mint-dark", "bg-sun-soft text-[#8a5b00]"];
 
 export function MobileNavbar({ logo }: { logo: SiteImage | null }) {
@@ -167,7 +168,7 @@ export function MobileNavbar({ logo }: { logo: SiteImage | null }) {
                         onClick={goTo(item.id)}
                         className="flex min-h-[48px] items-center gap-3 rounded-2xl px-3 py-1.5 text-base font-extrabold text-ink transition active:bg-sky-mist hover:bg-sky-mist"
                       >
-                        <span className={`grid size-9 shrink-0 place-items-center rounded-xl ${tones[i % tones.length]}`}>
+                        <span className={`grid size-9 shrink-0 place-items-center rounded-xl ${tones[(i + 1) % tones.length]}`}>
                           <Icon className="size-4.5" aria-hidden="true" />
                         </span>
                         {item.label}

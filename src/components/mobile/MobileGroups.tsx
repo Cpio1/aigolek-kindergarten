@@ -33,7 +33,7 @@ export function MobileGroups({ images }: { images: Record<1 | 2, SiteImage | nul
                     {img ? (
                       <Image
                         src={img.src}
-                        alt={`${g.title} — ${kindergarten.fullName}`}
+                        alt={`${g.title}, ${g.level.toLowerCase()} — ${kindergarten.fullName}`}
                         fill
                         sizes="(max-width: 600px) 92vw, 520px"
                         className="object-cover"
@@ -50,7 +50,8 @@ export function MobileGroups({ images }: { images: Record<1 | 2, SiteImage | nul
                     </span>
                   </div>
                   <div className="relative px-4 pt-2.5 pb-5">
-                    <h3 className="pr-14 font-display text-xl font-black text-ink">{g.title}</h3>
+                    <p className="pr-14 text-[11.5px] font-extrabold uppercase tracking-[0.12em] text-sky-deep">{g.level}</p>
+                    <h3 className="mt-0.5 pr-14 font-display text-xl font-black text-ink">{g.title}</h3>
                     <p className="mt-1.5 text-[14.5px] leading-relaxed text-ink-soft">{g.description}</p>
                     <ul className="mt-3 flex flex-wrap gap-1.5 pr-6">
                       {g.tags.map((t) => (

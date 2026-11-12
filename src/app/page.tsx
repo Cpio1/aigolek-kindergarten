@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import { getSiteImages } from "@/lib/images";
-import { kindergarten, navItems, type SectionId } from "@/data/kindergarten";
+import { kindergarten, sections, type SectionId } from "@/data/kindergarten";
 import { MotionProvider } from "@/components/shared/MotionProvider";
 import { WhatsAppButton } from "@/components/shared/FloatingWhatsApp";
 import { NavHeightSync } from "@/components/shared/NavHeightSync";
@@ -30,7 +30,7 @@ import { MobileFooter } from "@/components/mobile/MobileFooter";
  * нұсқалары CSS арқылы ауысады — гидратация қатесі мен layout shift болмайды.
  */
 function Section({ id, desktop, mobile }: { id: SectionId; desktop: ReactNode; mobile: ReactNode }) {
-  const label = navItems.find((n) => n.id === id)?.label;
+  const label = sections.find((n) => n.id === id)?.label;
   return (
     <section id={id} aria-label={label} className="relative">
       <div className="hidden lg:block">{desktop}</div>

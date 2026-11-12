@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { navItems, whatsappUrl } from "@/data/kindergarten";
+import { navItems, sections, whatsappUrl } from "@/data/kindergarten";
 import type { SiteImage } from "@/lib/images";
 import { Logo } from "@/components/shared/Logo";
 import { WhatsAppIcon } from "@/components/shared/WhatsAppButton";
@@ -18,7 +18,8 @@ export function DesktopNavbar({ logo }: { logo: SiteImage | null }) {
   }, []);
 
   useEffect(() => {
-    const sections = navItems
+    // Hero да бақыланады: жоғары оралғанда мәзірде ешбір пункт белгіленбейді
+    const els = sections
       .map((n) => document.getElementById(n.id))
       .filter((el): el is HTMLElement => Boolean(el));
     const observer = new IntersectionObserver(
@@ -29,7 +30,7 @@ export function DesktopNavbar({ logo }: { logo: SiteImage | null }) {
       },
       { rootMargin: "-40% 0px -55% 0px" },
     );
-    sections.forEach((s) => observer.observe(s));
+    els.forEach((s) => observer.observe(s));
     return () => observer.disconnect();
   }, []);
 

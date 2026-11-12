@@ -40,7 +40,7 @@ export function DesktopGroups({ images }: { images: Record<1 | 2, SiteImage | nu
                     {img ? (
                       <Image
                         src={img.src}
-                        alt={`${g.title} — ${kindergarten.fullName}`}
+                        alt={`${g.title}, ${g.level.toLowerCase()} — ${kindergarten.fullName}`}
                         fill
                         sizes="(min-width: 1280px) 530px, 460px"
                         className="object-cover transition-transform duration-700 group-hover:scale-105"
@@ -61,7 +61,8 @@ export function DesktopGroups({ images }: { images: Record<1 | 2, SiteImage | nu
                     >
                       {g.id}
                     </span>
-                    <h3 className="pr-16 font-display text-[clamp(1.4rem,1.9vw,1.75rem)] font-black text-ink">{g.title}</h3>
+                    <p className="pr-16 text-[13px] font-extrabold uppercase tracking-[0.12em] text-sky-deep">{g.level}</p>
+                    <h3 className="mt-0.5 pr-16 font-display text-[clamp(1.4rem,1.9vw,1.75rem)] font-black text-ink">{g.title}</h3>
                     <p className="mt-2 max-w-[30rem] text-[15px] xl:text-base leading-relaxed text-ink-soft">{g.description}</p>
                     <ul className="mt-4 flex flex-wrap gap-2 pr-8">
                       {g.tags.map((t) => (
