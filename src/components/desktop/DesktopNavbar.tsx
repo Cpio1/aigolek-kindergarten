@@ -43,12 +43,10 @@ export function DesktopNavbar({ logo }: { logo: SiteImage | null }) {
     >
       <nav
         aria-label="Негізгі мәзір"
-        className={`mx-auto flex w-full max-w-[1240px] items-center justify-between gap-4 px-6 transition-[height] duration-300 xl:px-8 ${
-          scrolled ? "h-[68px]" : "h-[80px]"
-        }`}
+        className="mx-auto flex h-16 w-full max-w-[1240px] items-center justify-between gap-4 px-6 xl:px-8"
       >
-        <a href="#home" className="shrink-0 text-[15px] xl:text-base" aria-label="Айгөлек — басты бет">
-          <Logo image={logo} size={scrolled ? 40 : 46} />
+        <a href="#home" className="shrink-0 text-[14px] xl:text-[15px]" aria-label="Айгөлек — басты бет">
+          <Logo image={logo} size={40} />
         </a>
 
         <ul className="flex items-center gap-0.5 xl:gap-1">
@@ -74,7 +72,7 @@ export function DesktopNavbar({ logo }: { logo: SiteImage | null }) {
           href={whatsappUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex shrink-0 items-center gap-2 rounded-full bg-sky-deep px-4 py-2.5 text-[14px] font-extrabold text-white shadow-[0_10px_24px_-12px_rgb(43_116_176/0.9)] transition hover:-translate-y-0.5 hover:bg-sky-dark xl:px-5 xl:text-[15px]"
+          className="inline-flex shrink-0 items-center gap-2 rounded-full bg-sky-deep px-4 py-2 text-[14px] font-extrabold text-white shadow-[0_10px_24px_-12px_rgb(43_116_176/0.9)] transition hover:-translate-y-0.5 hover:bg-sky-dark xl:px-5 xl:text-[15px]"
         >
           <WhatsAppIcon className="size-4.5" />
           Бізге жазылыңыз

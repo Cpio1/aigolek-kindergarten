@@ -67,15 +67,10 @@
 /* --- Әрқашан ашық тақырып --- */
 :root {
   color-scheme: only light;
+  /* Navbar биіктігі. NavHeightSync оны нақты биіктікпен жаңартып отырады. */
   --nav-h: 64px;
   background-color: #ffffff;
   color: #26374a;
-}
-
-@media (min-width: 1024px) {
-  :root {
-    --nav-h: 72px;
-  }
 }
 
 html {
@@ -97,9 +92,6 @@ body {
 /* Бөлімге өткенде тақырып sticky navbar астында қалмауы үшін */
 section[id] {
   scroll-margin-top: var(--nav-h);
-}
-#home {
-  scroll-margin-top: 0;
 }
 
 ::selection {

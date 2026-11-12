@@ -14,30 +14,30 @@ export function DesktopContacts() {
   ];
 
   return (
-    <div className="relative isolate overflow-hidden bg-sky-mist py-24 xl:py-28">
-      <Cloud className="absolute left-[3%] top-16 -z-10 w-28 text-white animate-drift" />
-      <Star className="absolute right-[4%] bottom-24 -z-10 size-9 text-sun-deep animate-spin-slow" />
+    <div className="relative isolate overflow-hidden bg-sky-mist py-[clamp(3rem,8vh,4.5rem)]">
+      <Cloud className="absolute left-[3%] top-10 -z-10 w-[4.5rem] text-white animate-drift" />
+      <Star className="absolute right-[3%] bottom-14 -z-10 size-6 text-sun-deep animate-spin-slow" />
 
       <div className="mx-auto w-full max-w-[1200px] px-8">
         <Reveal>
           <SectionHeading eyebrow={contacts.eyebrow} title={contacts.title} description={contacts.subtitle} />
         </Reveal>
 
-        <div className="mt-14 grid grid-cols-[0.9fr_1.1fr] gap-8 xl:gap-10">
+        <div className="mx-auto mt-[clamp(1.75rem,4vh,2.5rem)] grid max-w-[1080px] grid-cols-[0.9fr_1.1fr] gap-7 xl:gap-8">
           <Reveal x={-24} y={0} className="h-full">
-            <div className="flex h-full flex-col rounded-[40px_40px_40px_14px] bg-white p-8 shadow-card xl:p-10">
-              <h3 className="font-display text-[26px] font-black text-ink">{kindergarten.fullName}</h3>
-              <ul className="mt-6 space-y-4">
+            <div className="flex h-full flex-col rounded-[32px_32px_32px_12px] bg-white p-6 shadow-card xl:p-7">
+              <h3 className="font-display text-[clamp(1.3rem,1.7vw,1.5rem)] font-black text-ink">{kindergarten.fullName}</h3>
+              <ul className="mt-4 space-y-2.5">
                 {rows.map((r) => {
                   const Icon = r.icon;
                   const content = (
                     <>
-                      <span className={`grid size-12 shrink-0 place-items-center rounded-2xl ${r.tone}`}>
-                        <Icon className="size-5.5" aria-hidden="true" />
+                      <span className={`grid size-10 shrink-0 place-items-center rounded-xl ${r.tone}`}>
+                        <Icon className="size-5" aria-hidden="true" />
                       </span>
                       <span className="min-w-0">
-                        <span className="block text-xs font-extrabold uppercase tracking-[0.12em] text-ink-soft">{r.label}</span>
-                        <span className="mt-0.5 block text-[17px] font-extrabold text-ink">{r.value}</span>
+                        <span className="block text-[11px] font-extrabold uppercase tracking-[0.12em] text-ink-soft">{r.label}</span>
+                        <span className="mt-0.5 block text-[15px] xl:text-base font-extrabold text-ink">{r.value}</span>
                       </span>
                     </>
                   );
@@ -59,19 +59,19 @@ export function DesktopContacts() {
                 })}
               </ul>
 
-              <div className="mt-auto grid grid-cols-2 gap-3 pt-8">
+              <div className="mt-auto grid grid-cols-2 gap-2.5 pt-6">
                 <a
                   href={whatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="col-span-2 inline-flex items-center justify-center gap-2.5 rounded-full bg-wa px-6 py-3.5 text-base font-extrabold text-white shadow-[0_14px_30px_-14px_rgb(22_133_74/0.9)] transition hover:-translate-y-0.5 hover:bg-[#0f7340]"
+                  className="col-span-2 inline-flex items-center justify-center gap-2.5 rounded-full bg-wa px-5 py-3 text-[15px] font-extrabold text-white shadow-[0_14px_30px_-14px_rgb(22_133_74/0.9)] transition hover:-translate-y-0.5 hover:bg-[#0f7340]"
                 >
                   <WhatsAppIcon className="size-5" />
                   WhatsApp
                 </a>
                 <a
                   href={kindergarten.phoneHref}
-                  className="inline-flex items-center justify-center gap-2 rounded-full bg-sky-deep px-5 py-3 text-[15px] font-extrabold text-white transition hover:-translate-y-0.5 hover:bg-sky-dark"
+                  className="inline-flex items-center justify-center gap-2 rounded-full bg-sky-deep px-4 py-2.5 text-[14px] font-extrabold text-white transition hover:-translate-y-0.5 hover:bg-sky-dark"
                 >
                   <Phone className="size-4.5" aria-hidden="true" />
                   {contacts.call}
@@ -80,7 +80,7 @@ export function DesktopContacts() {
                   href={map.searchUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 rounded-full border-2 border-sky/30 bg-white px-5 py-3 text-[15px] font-extrabold text-sky-dark transition hover:border-sky hover:bg-sky-mist"
+                  className="inline-flex items-center justify-center gap-2 rounded-full border-2 border-sky/30 bg-white px-4 py-2.5 text-[14px] font-extrabold text-sky-dark transition hover:border-sky hover:bg-sky-mist"
                 >
                   <MapIcon className="size-4.5" aria-hidden="true" />
                   {contacts.map}
@@ -90,7 +90,7 @@ export function DesktopContacts() {
           </Reveal>
 
           <Reveal x={24} y={0} className="h-full">
-            <MapCard className="h-full min-h-[440px] rounded-[40px_40px_14px_40px] border-[8px] border-white shadow-card" />
+            <MapCard className="h-full min-h-[340px] rounded-[32px_32px_12px_32px] border-[6px] border-white shadow-card" />
           </Reveal>
         </div>
       </div>

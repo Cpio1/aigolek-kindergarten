@@ -8,9 +8,9 @@ import { WhatsAppIcon } from "@/components/shared/WhatsAppButton";
 export function MobileFooter({ logo }: { logo: SiteImage | null }) {
   const year = new Date().getFullYear();
   return (
-    <div className="relative isolate overflow-hidden bg-ink pt-12 text-white">
-      <Wave flip className="absolute inset-x-0 top-0 h-6 w-full text-sky-mist" />
-      <Star className="absolute right-6 top-12 -z-10 size-5 text-sun/40" />
+    <div className="relative isolate overflow-hidden bg-ink pt-10 text-white">
+      <Wave flip className="absolute inset-x-0 top-0 h-5 w-full text-sky-mist" />
+      <Star className="absolute right-6 top-10 -z-10 size-3.5 text-sun/40" />
 
       <div className="mx-auto w-full max-w-[560px] px-4 pb-[calc(88px+env(safe-area-inset-bottom))] sm:px-6">
         <a href="#home" className="inline-block text-[14px]" aria-label="Айгөлек — басты бет">

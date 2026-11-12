@@ -8,17 +8,17 @@ import { WhatsAppIcon } from "@/components/shared/WhatsAppButton";
 export function DesktopFooter({ logo }: { logo: SiteImage | null }) {
   const year = new Date().getFullYear();
   return (
-    <div className="relative isolate overflow-hidden bg-ink pt-20 text-white">
-      <Wave flip className="absolute inset-x-0 top-0 h-12 w-full text-sky-mist" />
-      <Cloud className="absolute right-[6%] top-20 -z-10 w-32 text-white/5" />
-      <Star className="absolute left-[45%] top-24 -z-10 size-6 text-sun/30" />
-      <Sparkle className="absolute right-[30%] bottom-24 -z-10 size-5 text-sky/40" />
+    <div className="relative isolate overflow-hidden bg-ink pt-16 text-white">
+      <Wave flip className="absolute inset-x-0 top-0 h-9 w-full text-sky-mist" />
+      <Cloud className="absolute right-[6%] top-14 -z-10 w-20 text-white/5" />
+      <Star className="absolute left-[45%] top-16 -z-10 size-4 text-sun/30" />
+      <Sparkle className="absolute right-[30%] bottom-20 -z-10 size-3.5 text-sky/40" />
 
-      <div className="mx-auto grid w-full max-w-[1200px] grid-cols-[1.3fr_0.8fr_1.1fr_1fr] gap-10 px-8 pb-12">
+      <div className="mx-auto grid w-full max-w-[1200px] grid-cols-[1.3fr_0.8fr_1.1fr_1fr] gap-10 px-8 pb-10">
         <div>
           <a href="#home" className="inline-block text-base" aria-label="Айгөлек — басты бет">
             <span className={logo ? "inline-block rounded-2xl bg-white px-3 py-2" : ""}>
-              <Logo image={logo} size={46} tone={logo ? "dark" : "light"} />
+              <Logo image={logo} size={42} tone={logo ? "dark" : "light"} />
             </span>
           </a>
           <p className="mt-5 max-w-[17rem] text-[15px] leading-relaxed text-white/75">{footer.tagline}</p>

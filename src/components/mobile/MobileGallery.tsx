@@ -22,14 +22,14 @@ export function MobileGallery({ images }: { images: SiteImage[] }) {
   const [first, ...rest] = visible;
 
   return (
-    <div className="relative bg-white pt-12 pb-14">
+    <div className="relative bg-white pt-10 pb-10">
       <div className="mx-auto w-full max-w-[560px] px-4 sm:px-6">
         <Reveal>
           <SectionHeading eyebrow={gallery.eyebrow} title={gallery.title} description={gallery.subtitle} size="mobile" />
         </Reveal>
 
         {images.length === 0 ? (
-          <div className="mt-8 grid grid-cols-2 gap-3">
+          <div className="mt-6 grid grid-cols-2 gap-2.5">
             {Array.from({ length: 6 }).map((_, i) => (
               <div key={i} className={`overflow-hidden ${i === 0 ? "col-span-2 aspect-[16/10]" : "aspect-square"} ${radii[i % radii.length]}`}>
                 <PhotoPlaceholder index={i} text={gallery.placeholder} />
@@ -38,13 +38,13 @@ export function MobileGallery({ images }: { images: SiteImage[] }) {
           </div>
         ) : (
           <>
-            <div className="mt-8">
+            <div className="mt-6">
               {first ? (
                 <button
                   type="button"
                   onClick={() => g.open(0)}
-                  className="relative block w-full overflow-hidden rounded-[28px_28px_28px_10px] bg-sky-soft shadow-soft"
-                  style={{ aspectRatio: ratio(first, 0.8, 1.8) }}
+                  className="relative block w-full overflow-hidden rounded-[24px_24px_24px_8px] bg-sky-soft shadow-soft"
+                  style={{ aspectRatio: ratio(first, 1.15, 1.8) }}
                   aria-label={`${galleryAlt(0)} — үлкейту`}
                 >
                   <Image src={first.src} alt={galleryAlt(0)} fill sizes="(max-width: 600px) 92vw, 520px" className="object-cover object-[50%_30%]" />
@@ -55,16 +55,16 @@ export function MobileGallery({ images }: { images: SiteImage[] }) {
               ) : null}
 
               {rest.length > 0 ? (
-                <ul className="mt-3 columns-2 gap-3 sm:columns-3">
+                <ul className="mt-2.5 columns-2 gap-2.5 sm:columns-3">
                   {rest.map((img, j) => {
                     const i = j + 1;
                     return (
-                      <li key={img.src} className="mb-3 break-inside-avoid">
+                      <li key={img.src} className="mb-2.5 break-inside-avoid">
                         <button
                           type="button"
                           onClick={() => g.open(i)}
                           className={`relative block w-full overflow-hidden bg-sky-soft shadow-soft ${radii[i % radii.length]}`}
-                          style={{ aspectRatio: ratio(img) }}
+                          style={{ aspectRatio: ratio(img, 0.75, 1.6) }}
                           aria-label={`${galleryAlt(i)} — үлкейту`}
                         >
                           <Image
@@ -87,7 +87,7 @@ export function MobileGallery({ images }: { images: SiteImage[] }) {
                 type="button"
                 onClick={g.toggle}
                 aria-expanded={g.expanded}
-                className="mt-4 flex min-h-[52px] w-full items-center justify-center gap-2 rounded-full border-2 border-sky/30 bg-white text-base font-extrabold text-sky-dark active:bg-sky-mist"
+                className="mt-3 flex min-h-[48px] w-full items-center justify-center gap-2 rounded-full border-2 border-sky/30 bg-white text-base font-extrabold text-sky-dark active:bg-sky-mist"
               >
                 {g.expanded ? gallery.less : gallery.more}
                 {g.expanded ? <ChevronUp className="size-5" aria-hidden="true" /> : <ChevronDown className="size-5" aria-hidden="true" />}

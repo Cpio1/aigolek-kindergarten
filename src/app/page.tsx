@@ -3,6 +3,7 @@ import { getSiteImages } from "@/lib/images";
 import { kindergarten, navItems, type SectionId } from "@/data/kindergarten";
 import { MotionProvider } from "@/components/shared/MotionProvider";
 import { WhatsAppButton } from "@/components/shared/FloatingWhatsApp";
+import { NavHeightSync } from "@/components/shared/NavHeightSync";
 
 import { DesktopNavbar } from "@/components/desktop/DesktopNavbar";
 import { DesktopHero } from "@/components/desktop/DesktopHero";
@@ -58,7 +59,7 @@ export default function Home() {
         Негізгі мазмұнға өту
       </a>
 
-      <header className="sticky top-0 z-50">
+      <header data-site-header className="sticky top-0 z-50">
         <div className="hidden lg:block">
           <DesktopNavbar logo={images.logo} />
         </div>
@@ -95,6 +96,7 @@ export default function Home() {
       </footer>
 
       <WhatsAppButton />
+      <NavHeightSync />
 
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
     </MotionProvider>

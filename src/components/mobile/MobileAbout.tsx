@@ -17,32 +17,32 @@ const iconStyles = ["bg-sky text-white", "bg-sun text-ink", "bg-mint-deep text-w
 
 export function MobileAbout({ image }: { image: SiteImage | null }) {
   return (
-    <div className="relative bg-white pt-10 pb-14">
+    <div className="relative bg-white pt-8 pb-10">
       <div className="mx-auto w-full max-w-[560px] px-4 sm:px-6">
         <Reveal>
           <SectionHeading eyebrow={about.eyebrow} title={about.title} size="mobile" />
         </Reveal>
 
-        <Reveal className="relative mx-auto mt-7 w-[92%] max-w-[400px]">
-          <div className="absolute -left-3 -top-3 -z-0 h-full w-full shape-blob-3 bg-mint" aria-hidden="true" />
-          <div className="shape-blob-2 relative aspect-[4/3.4] overflow-hidden border-[5px] border-white bg-sky-soft shadow-card">
+        <Reveal className="relative mx-auto mt-5 w-[90%] max-w-[340px]">
+          <div className="absolute -left-2 -top-2 -z-0 h-full w-full shape-blob-3 bg-mint" aria-hidden="true" />
+          <div className="shape-blob-2 relative aspect-[4/3.1] overflow-hidden border-4 border-white bg-sky-soft shadow-card">
             {image ? (
               <Image
                 src={image.src}
                 alt={`${kindergarten.fullName} — балалар ортасы`}
                 fill
-                sizes="(max-width: 600px) 86vw, 400px"
+                sizes="(max-width: 600px) 84vw, 340px"
                 className="object-cover object-center"
               />
             ) : (
               <Illustration name="playground" className="absolute inset-0 h-full w-full" />
             )}
           </div>
-          <Star className="absolute -right-2 -top-3 size-8 text-sun-deep animate-spin-slow" />
-          <Sparkle className="absolute -left-3 bottom-4 size-5 text-sky animate-twinkle" />
+          <Star className="absolute -right-3 -top-3 size-5 text-sun-deep animate-spin-slow" />
+          <Sparkle className="absolute -left-3 bottom-4 size-3.5 text-sky animate-twinkle" />
         </Reveal>
 
-        <Reveal className="mt-7 space-y-3 text-[15px] leading-relaxed text-ink-soft sm:text-base">
+        <Reveal className="mt-5 space-y-2.5 text-[14.5px] leading-relaxed text-ink-soft sm:text-base">
           {about.paragraphs.map((p) => (
             <p key={p} className="text-pretty">
               {p}
@@ -50,18 +50,18 @@ export function MobileAbout({ image }: { image: SiteImage | null }) {
           ))}
         </Reveal>
 
-        <ul className="mt-7 grid grid-cols-2 gap-3">
+        <ul className="mt-5 grid grid-cols-2 gap-2.5">
           {about.highlights.map((h, i) => {
             const Icon = highlightIcons[h.key];
             return (
               <li key={h.key} className={cardStyles[i]}>
-                <Reveal delay={i * 0.05} y={14} className="flex h-full flex-col gap-2.5 p-3.5">
-                  <span className={`grid size-10 place-items-center rounded-xl ${iconStyles[i]}`}>
-                    <Icon className="size-5" aria-hidden="true" />
+                <Reveal delay={i * 0.05} y={14} className="flex h-full flex-col gap-2 p-3">
+                  <span className={`grid size-9 place-items-center rounded-xl ${iconStyles[i]}`}>
+                    <Icon className="size-4.5" aria-hidden="true" />
                   </span>
                   <span className="leading-tight">
-                    <span className="block font-display text-[15px] font-black text-ink min-[375px]:text-base">{h.title}</span>
-                    <span className="mt-1 block text-[13px] font-semibold text-ink-soft">{h.text}</span>
+                    <span className="block font-display text-[14px] font-black text-ink min-[375px]:text-[15px]">{h.title}</span>
+                    <span className="mt-0.5 block text-[12.5px] font-semibold text-ink-soft">{h.text}</span>
                   </span>
                 </Reveal>
               </li>

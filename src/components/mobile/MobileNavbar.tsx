@@ -125,7 +125,7 @@ export function MobileNavbar({ logo }: { logo: SiteImage | null }) {
           <>
             <m.div
               key="overlay"
-              className="fixed inset-x-0 top-16 bottom-0 z-40 bg-ink/40 backdrop-blur-[2px]"
+              className="fixed inset-x-0 top-[var(--nav-h)] bottom-0 z-40 bg-ink/40 backdrop-blur-[2px]"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -141,18 +141,18 @@ export function MobileNavbar({ logo }: { logo: SiteImage | null }) {
               aria-modal="true"
               aria-label="Сайт бөлімдері"
               tabIndex={-1}
-              className="fixed outline-none top-16 right-0 bottom-0 z-50 flex w-[min(88vw,380px)] flex-col overflow-y-auto rounded-tl-[32px] bg-white shadow-2xl"
+              className="fixed outline-none top-[var(--nav-h)] right-0 bottom-0 z-50 flex w-[min(88vw,380px)] flex-col overflow-y-auto rounded-tl-[32px] bg-white shadow-2xl"
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "tween", duration: 0.32, ease: [0.22, 1, 0.36, 1] }}
             >
               <div className="pointer-events-none absolute -top-2 right-4 opacity-80" aria-hidden="true">
-                <Cloud className="w-20 text-sky-soft" />
+                <Cloud className="w-12 text-sky-soft" />
               </div>
-              <Star className="pointer-events-none absolute right-24 top-6 size-5 text-sun-deep" />
+              <Star className="pointer-events-none absolute right-20 top-5 size-3.5 text-sun-deep" />
 
-              <ul className="relative flex flex-col gap-1.5 px-4 pt-6">
+              <ul className="relative flex flex-col gap-1 px-4 pt-5">
                 {navItems.map((item, i) => {
                   const Icon = icons[item.id];
                   return (
@@ -165,10 +165,10 @@ export function MobileNavbar({ logo }: { logo: SiteImage | null }) {
                       <a
                         href={`#${item.id}`}
                         onClick={goTo(item.id)}
-                        className="flex min-h-[52px] items-center gap-3.5 rounded-2xl px-3 py-2 text-[17px] font-extrabold text-ink transition active:bg-sky-mist hover:bg-sky-mist"
+                        className="flex min-h-[48px] items-center gap-3 rounded-2xl px-3 py-1.5 text-base font-extrabold text-ink transition active:bg-sky-mist hover:bg-sky-mist"
                       >
-                        <span className={`grid size-10 shrink-0 place-items-center rounded-xl ${tones[i % tones.length]}`}>
-                          <Icon className="size-5" aria-hidden="true" />
+                        <span className={`grid size-9 shrink-0 place-items-center rounded-xl ${tones[i % tones.length]}`}>
+                          <Icon className="size-4.5" aria-hidden="true" />
                         </span>
                         {item.label}
                       </a>
