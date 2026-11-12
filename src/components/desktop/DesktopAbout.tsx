@@ -22,26 +22,26 @@ export function DesktopAbout({ image }: { image: SiteImage | null }) {
       <Cloud className="absolute right-[4%] top-8 -z-10 w-16 text-sky-soft animate-drift" />
       <Dots className="absolute right-[2%] bottom-10 -z-10 w-12 text-sun/60" />
 
-      <div className="mx-auto grid w-full max-w-[1200px] grid-cols-[0.85fr_1.15fr] items-center gap-12 px-8 xl:gap-16">
+      <div className="mx-auto grid w-full max-w-[1200px] grid-cols-[1fr_1fr] items-center gap-12 px-8 xl:gap-16">
         {/* Фото */}
-        <Reveal x={-30} y={0} className="relative mx-auto w-full max-w-[clamp(280px,25vw,360px)]">
-          <Blob variant={2} className="absolute -left-9 -top-8 -z-10 size-[190px] text-sky-soft" />
-          <div className="absolute -right-4 -bottom-4 -z-10 h-full w-full shape-arch bg-mint" aria-hidden="true" />
-          <div className="group shape-arch relative aspect-[1/1.1] overflow-hidden border-[6px] border-white bg-sky-soft shadow-card">
+        <Reveal x={-30} y={0} className="relative mx-auto w-full max-w-[clamp(360px,36vw,500px)]">
+          <Blob variant={2} className="absolute -left-10 -top-10 -z-10 size-[170px] text-sky-soft" />
+          <div className="absolute -right-4 -bottom-4 -z-10 h-full w-full shape-photo-about-back bg-mint" aria-hidden="true" />
+          <div className="group shape-photo-about relative aspect-[4/3.2] overflow-hidden border-[6px] border-white bg-sky-soft shadow-card">
             {image ? (
               <Image
                 src={image.src}
                 alt={`${kindergarten.fullName} — балалар ортасы`}
                 fill
-                sizes="360px"
-                className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                sizes="(min-width: 1400px) 500px, 36vw"
+                className="object-cover object-[50%_45%] transition-transform duration-700 group-hover:scale-105"
               />
             ) : (
               <Illustration name="playground" className="absolute inset-0 h-full w-full" />
             )}
           </div>
-          <Star className="absolute -right-8 top-6 size-6 text-sun-deep animate-spin-slow" />
-          <Sparkle className="absolute -left-6 bottom-24 size-4 text-sky animate-twinkle" />
+          <Star className="absolute -right-9 -top-3 size-6 text-sun-deep animate-spin-slow" />
+          <Sparkle className="absolute -left-8 bottom-16 size-4 text-sky animate-twinkle" />
           <div className="absolute -bottom-5 left-6 flex items-center gap-2.5 rounded-[18px_18px_18px_6px] bg-white px-3 py-2 shadow-card">
             <span className="grid size-8 place-items-center rounded-full bg-coral/90 text-white">
               <Heart className="size-4" fill="currentColor" aria-hidden="true" />

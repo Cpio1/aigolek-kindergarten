@@ -6,20 +6,14 @@ import { gallery } from "@/data/kindergarten";
 import type { SiteImage } from "@/lib/images";
 import { Reveal } from "@/components/shared/Reveal";
 import { SectionHeading } from "@/components/shared/SectionHeading";
-import { Lightbox, galleryAlt, useGallery } from "@/components/shared/ImageGallery";
+import { Lightbox, galleryAlt, photoRatio, toRows, useGallery } from "@/components/shared/ImageGallery";
 import { PhotoPlaceholder } from "@/components/shared/Illustrations";
 
 const radii = ["rounded-[22px_22px_22px_8px]", "rounded-[22px]", "rounded-[8px_22px_22px_22px]", "rounded-[22px_8px_22px_22px]"];
 
-/** Фото пропорциясы сақталады (бет кесілмейді); тым ұзын суреттер ғана шектеледі. */
-function ratio(img: SiteImage, min = 0.7, max = 1.8) {
-  return Math.min(max, Math.max(min, img.width / img.height));
-}
-
 export function MobileGallery({ images }: { images: SiteImage[] }) {
   const g = useGallery(images.length, gallery.initialCount);
   const visible = images.slice(0, g.visibleCount);
-  const [first, ...rest] = visible;
 
   return (
     <div className="relative bg-white pt-10 pb-10">
@@ -38,48 +32,37 @@ export function MobileGallery({ images }: { images: SiteImage[] }) {
           </div>
         ) : (
           <>
-            <div className="mt-6">
-              {first ? (
-                <button
-                  type="button"
-                  onClick={() => g.open(0)}
-                  className="relative block w-full overflow-hidden rounded-[24px_24px_24px_8px] bg-sky-soft shadow-soft"
-                  style={{ aspectRatio: ratio(first, 1.15, 1.8) }}
-                  aria-label={`${galleryAlt(0)} — үлкейту`}
-                >
-                  <Image src={first.src} alt={galleryAlt(0)} fill sizes="(max-width: 600px) 92vw, 520px" className="object-cover object-[50%_30%]" />
-                  <span className="absolute right-3 bottom-3 grid size-9 place-items-center rounded-full bg-white/90 text-sky-deep shadow-soft">
-                    <Expand className="size-4" aria-hidden="true" />
-                  </span>
-                </button>
-              ) : null}
-
-              {rest.length > 0 ? (
-                <ul className="mt-2.5 columns-2 gap-2.5 sm:columns-3">
-                  {rest.map((img, j) => {
-                    const i = j + 1;
-                    return (
-                      <li key={img.src} className="mb-2.5 break-inside-avoid">
+            {/* Екі бағанды қатарлар: жұп фотолар бір биіктікте, пропорциясы сақталады */}
+            <div className="mt-6 flex flex-col gap-2.5">
+              {toRows(visible.map((img, i) => ({ img, i })), 2).map((row, r) => {
+                const sum = row.reduce((acc, { img }) => acc + photoRatio(img), 0);
+                return (
+                  <ul key={r} className="mx-auto flex w-full gap-2.5" style={{ maxWidth: `${Math.round(sum * 230)}px` }}>
+                    {row.map(({ img, i }) => (
+                      <li key={img.src} className="min-w-0" style={{ flex: `${photoRatio(img)} 1 0%` }}>
                         <button
                           type="button"
                           onClick={() => g.open(i)}
                           className={`relative block w-full overflow-hidden bg-sky-soft shadow-soft ${radii[i % radii.length]}`}
-                          style={{ aspectRatio: ratio(img, 0.75, 1.6) }}
+                          style={{ aspectRatio: photoRatio(img) }}
                           aria-label={`${galleryAlt(i)} — үлкейту`}
                         >
                           <Image
                             src={img.src}
                             alt={galleryAlt(i)}
                             fill
-                            sizes="(max-width: 640px) 46vw, 30vw"
-                            className="object-cover object-[50%_30%]"
+                            sizes="(max-width: 640px) 60vw, 320px"
+                            className="object-cover object-[50%_40%]"
                           />
+                          <span className="absolute right-2 bottom-2 grid size-8 place-items-center rounded-full bg-white/90 text-sky-deep shadow-soft">
+                            <Expand className="size-3.5" aria-hidden="true" />
+                          </span>
                         </button>
                       </li>
-                    );
-                  })}
-                </ul>
-              ) : null}
+                    ))}
+                  </ul>
+                );
+              })}
             </div>
 
             {g.hasMore ? (

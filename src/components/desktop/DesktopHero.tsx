@@ -38,7 +38,7 @@ export function DesktopHero({ image }: { image: SiteImage | null }) {
       </m.div>
       <Dots className="absolute bottom-20 left-[2%] -z-10 w-10 text-sky/25" />
 
-      <div className="mx-auto grid w-full max-w-[1200px] grid-cols-[1.1fr_0.9fr] items-center gap-10 px-8 pt-[clamp(1.5rem,4.5vh,3rem)] pb-[clamp(3.5rem,9vh,5rem)] xl:gap-14">
+      <div className="mx-auto grid w-full max-w-[1200px] grid-cols-[1fr_1fr] items-center gap-10 px-8 pt-[clamp(1.5rem,4.5vh,3rem)] pb-[clamp(3.5rem,9vh,5rem)] xl:gap-14">
         {/* Сол жақ — мәтін */}
         <div className="relative">
           <m.span
@@ -138,20 +138,20 @@ export function DesktopHero({ image }: { image: SiteImage | null }) {
           initial={{ opacity: 0, scale: 0.96 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.1, ease }}
-          className="relative mx-auto w-full max-w-[clamp(320px,31vw,450px)]"
+          className="relative mx-auto w-full max-w-[clamp(380px,38vw,540px)]"
         >
-          <m.div style={{ y: yBack }} className="absolute -right-4 -bottom-4 -z-10 h-[88%] w-[88%]" aria-hidden="true">
-            <div className="shape-blob-2 h-full w-full bg-sun" />
+          <m.div style={{ y: yBack }} className="absolute -right-4 -bottom-4 -z-10 h-[90%] w-[90%]" aria-hidden="true">
+            <div className="shape-photo-hero-back h-full w-full bg-sun" />
           </m.div>
-          <Blob variant={0} className="absolute -left-7 top-4 -z-10 size-24 text-mint" />
+          <Blob variant={0} className="absolute -left-8 -top-6 -z-10 size-24 text-mint" />
 
-          <div className="shape-blob-1 relative aspect-[1/1.04] overflow-hidden border-[8px] border-white bg-sky-soft shadow-float">
+          <div className="shape-photo-hero relative aspect-[5/4] overflow-hidden border-[7px] border-white bg-sky-soft shadow-float">
             {image ? (
               <ArtImage
                 image={image}
                 alt={`${kindergarten.fullName} — басты фото`}
                 media="(min-width: 1024px)"
-                sizes="(min-width: 1280px) 450px, 400px"
+                sizes="(min-width: 1440px) 540px, 38vw"
                 className="absolute inset-0 h-full w-full object-cover object-center"
               />
             ) : (
@@ -160,18 +160,18 @@ export function DesktopHero({ image }: { image: SiteImage | null }) {
           </div>
 
           {/* Қалқымалы безендірулер */}
-          <m.div style={{ y: yFast }} className="absolute -right-5 -top-7" aria-hidden="true">
-            <Sun className="size-[4.5rem] animate-float-slow" />
+          <m.div style={{ y: yFast }} className="absolute -right-8 -top-10" aria-hidden="true">
+            <Sun className="size-16 animate-float-slow" />
           </m.div>
-          <m.div style={{ y: ySlow }} className="absolute -left-12 top-[4%]" aria-hidden="true">
-            <Cloud className="w-20 text-white drop-shadow-[0_10px_18px_rgb(57_139_203/0.25)] animate-drift" />
+          <m.div style={{ y: ySlow }} className="absolute -left-16 -top-7" aria-hidden="true">
+            <Cloud className="w-16 text-white drop-shadow-[0_10px_18px_rgb(57_139_203/0.25)] animate-drift" />
           </m.div>
-          <Star className="absolute -left-5 bottom-[34%] size-6 text-sun-deep animate-spin-slow" />
-          <Sparkle className="absolute right-[10%] -bottom-6 size-4 text-sky animate-twinkle" />
-          <span className="absolute -right-4 top-[55%] size-3 rounded-full bg-mint-deep/80 animate-float" aria-hidden="true" />
+          <Star className="absolute -left-10 top-[42%] size-5 text-sun-deep animate-spin-slow" />
+          <Sparkle className="absolute right-[18%] -bottom-9 size-4 text-sky animate-twinkle" />
+          <span className="absolute -right-7 top-[62%] size-3 rounded-full bg-mint-deep/80 animate-float" aria-hidden="true" />
 
           {/* Ақпараттық чиптер */}
-          <div className="absolute -left-8 bottom-6 flex items-center gap-2.5 rounded-2xl bg-white/95 px-3 py-2 shadow-card backdrop-blur animate-float-slow xl:-left-10">
+          <div className="absolute -left-8 -bottom-5 flex items-center gap-2.5 rounded-2xl bg-white/95 px-3 py-2 shadow-card backdrop-blur animate-float-slow xl:-left-10">
             <span className="grid size-8 place-items-center rounded-xl bg-sky-soft text-sky-deep">
               <Clock className="size-4" aria-hidden="true" />
             </span>
@@ -180,7 +180,7 @@ export function DesktopHero({ image }: { image: SiteImage | null }) {
               <span className="block text-xs font-bold text-ink-soft">Жұмыс уақыты</span>
             </span>
           </div>
-          <div className="absolute -right-4 top-[32%] flex items-center gap-2 rounded-full bg-white/95 py-1.5 pr-3.5 pl-1.5 shadow-card backdrop-blur animate-float xl:-right-6">
+          <div className="absolute -right-8 top-[24%] flex items-center gap-2 rounded-full bg-white/95 py-1.5 pr-3.5 pl-1.5 shadow-card backdrop-blur animate-float xl:-right-10">
             <span className="grid size-7 place-items-center rounded-full bg-mint text-mint-dark">
               <Languages className="size-3.5" aria-hidden="true" />
             </span>

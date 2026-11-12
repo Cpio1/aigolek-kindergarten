@@ -43,23 +43,23 @@ export function MobileHero({ image }: { image: SiteImage | null }) {
         </p>
 
         {/* 4. Фото */}
-        <div className="relative mx-auto mt-5 w-[94%] max-w-[360px]">
-          <div className="absolute -right-2 -bottom-2 -z-10 h-[94%] w-[94%] shape-blob-2 bg-sun" aria-hidden="true" />
-          <div className="shape-blob-1 relative aspect-[1/0.92] overflow-hidden border-[5px] border-white bg-sky-mist shadow-float">
+        <div className="relative mx-auto mt-5 w-[96%] max-w-[440px]">
+          <div className="absolute -right-2 -bottom-2 -z-10 h-[94%] w-[94%] shape-photo-hero-back bg-sun" aria-hidden="true" />
+          <div className="shape-photo-hero relative aspect-[4/3.1] overflow-hidden border-[5px] border-white bg-sky-mist shadow-float">
             {image ? (
               <ArtImage
                 image={image}
                 alt={`${kindergarten.fullName} — басты фото`}
                 media="(max-width: 1023.98px)"
-                sizes="(max-width: 600px) 88vw, 360px"
+                sizes="(max-width: 600px) 92vw, 440px"
                 className="absolute inset-0 h-full w-full object-cover object-center"
               />
             ) : (
               <Illustration name="house" className="absolute inset-0 h-full w-full" />
             )}
           </div>
-          <Sun className="absolute -top-4 -right-2 size-11 animate-float-slow" />
-          <Sparkle className="absolute -left-2 bottom-6 size-3.5 text-sky-deep animate-twinkle" />
+          <Sun className="absolute -top-6 -right-3 size-10 animate-float-slow" />
+          <Sparkle className="absolute -left-2 -bottom-3 size-3.5 text-sky-deep animate-twinkle" />
         </div>
 
         {/* 5. WhatsApp */}

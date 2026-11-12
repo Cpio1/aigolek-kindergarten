@@ -23,23 +23,23 @@ export function MobileAbout({ image }: { image: SiteImage | null }) {
           <SectionHeading eyebrow={about.eyebrow} title={about.title} size="mobile" />
         </Reveal>
 
-        <Reveal className="relative mx-auto mt-5 w-[90%] max-w-[340px]">
-          <div className="absolute -left-2 -top-2 -z-0 h-full w-full shape-blob-3 bg-mint" aria-hidden="true" />
-          <div className="shape-blob-2 relative aspect-[4/3.1] overflow-hidden border-4 border-white bg-sky-soft shadow-card">
+        <Reveal className="relative mx-auto mt-5 w-[94%] max-w-[440px]">
+          <div className="absolute -left-2 -top-2 -z-0 h-full w-full shape-photo-about-back bg-mint" aria-hidden="true" />
+          <div className="shape-photo-about relative aspect-[4/3.1] overflow-hidden border-4 border-white bg-sky-soft shadow-card">
             {image ? (
               <Image
                 src={image.src}
                 alt={`${kindergarten.fullName} — балалар ортасы`}
                 fill
-                sizes="(max-width: 600px) 84vw, 340px"
-                className="object-cover object-center"
+                sizes="(max-width: 600px) 90vw, 440px"
+                className="object-cover object-[50%_45%]"
               />
             ) : (
               <Illustration name="playground" className="absolute inset-0 h-full w-full" />
             )}
           </div>
-          <Star className="absolute -right-3 -top-3 size-5 text-sun-deep animate-spin-slow" />
-          <Sparkle className="absolute -left-3 bottom-4 size-3.5 text-sky animate-twinkle" />
+          <Star className="absolute -right-2 -top-4 size-5 text-sun-deep animate-spin-slow" />
+          <Sparkle className="absolute -left-3 -bottom-3 size-3.5 text-sky animate-twinkle" />
         </Reveal>
 
         <Reveal className="mt-5 space-y-2.5 text-[14.5px] leading-relaxed text-ink-soft sm:text-base">

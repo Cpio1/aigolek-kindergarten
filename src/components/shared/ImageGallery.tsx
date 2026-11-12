@@ -13,6 +13,18 @@ export function galleryAlt(i: number) {
   return `${kindergarten.fullName} — галерея, ${i + 1}-фото`;
 }
 
+/** Фото пропорциясы (ені/биіктігі). Тым ұзын/жалпақ суреттер ғана шектеледі — бұрмаланбайды, object-cover аздап қиады. */
+export function photoRatio(img: SiteImage, min = 0.75, max = 1.6) {
+  return Math.min(max, Math.max(min, img.width / img.height));
+}
+
+/** Фотоларды қатарларға бөледі (әр қатардағы фотолар бір биіктікте, пропорциясы сақталады). */
+export function toRows<T>(items: T[], perRow: number): T[][] {
+  const rows: T[][] = [];
+  for (let i = 0; i < items.length; i += perRow) rows.push(items.slice(i, i + perRow));
+  return rows;
+}
+
 /** Галереяның ортақ логикасы: қанша фото көрсетілетіні және ашық фото индексі. */
 export function useGallery(total: number, initialCount: number) {
   const [expanded, setExpanded] = useState(false);

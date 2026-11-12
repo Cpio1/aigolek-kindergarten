@@ -7,7 +7,7 @@ import type { SiteImage } from "@/lib/images";
 import { Reveal } from "@/components/shared/Reveal";
 import { SectionHeading } from "@/components/shared/SectionHeading";
 import { Blob, Sparkle } from "@/components/shared/DecorativeShapes";
-import { Lightbox, galleryAlt, useGallery } from "@/components/shared/ImageGallery";
+import { Lightbox, galleryAlt, photoRatio, toRows, useGallery } from "@/components/shared/ImageGallery";
 import { PhotoPlaceholder } from "@/components/shared/Illustrations";
 
 const radii = [
@@ -28,11 +28,6 @@ const placeholderLayout = [
   "col-span-2 row-span-1",
   "col-span-2 row-span-1",
 ];
-
-/** Тым ұзын/жалпақ фотолар экранды толтырып жібермеуі үшін пропорция шектеледі. */
-function ratio(img: SiteImage) {
-  return Math.min(1.6, Math.max(0.75, img.width / img.height));
-}
 
 export function DesktopGallery({ images }: { images: SiteImage[] }) {
   const g = useGallery(images.length, gallery.initialCount);
@@ -57,33 +52,42 @@ export function DesktopGallery({ images }: { images: SiteImage[] }) {
           </div>
         ) : (
           <>
-            <ul className="mx-auto mt-[clamp(1.75rem,4vh,2.5rem)] max-w-[1080px] columns-3 gap-4 [column-fill:_balance]">
-              {images.slice(0, g.visibleCount).map((img, i) => (
-                <li key={img.src} className="mb-4 break-inside-avoid">
-                  <Reveal delay={(i % 3) * 0.06} y={18}>
-                    <button
-                      type="button"
-                      onClick={() => g.open(i)}
-                      className={`group relative block w-full overflow-hidden bg-sky-soft shadow-soft ${radii[i % radii.length]}`}
-                      style={{ aspectRatio: ratio(img) }}
-                      aria-label={`${galleryAlt(i)} — үлкейту`}
-                    >
-                      <Image
-                        src={img.src}
-                        alt={galleryAlt(i)}
-                        fill
-                        sizes="(min-width: 1280px) 350px, 310px"
-                        className="object-cover transition-transform duration-700 group-hover:scale-[1.06]"
-                      />
-                      <span className="absolute inset-0 bg-gradient-to-t from-ink/45 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-                      <span className="absolute right-4 bottom-4 grid size-11 translate-y-2 place-items-center rounded-full bg-white/95 text-sky-deep opacity-0 shadow-soft transition duration-300 group-hover:translate-y-0 group-hover:opacity-100 group-focus-visible:opacity-100">
-                        <ZoomIn className="size-5" aria-hidden="true" />
-                      </span>
-                    </button>
-                  </Reveal>
-                </li>
-              ))}
-            </ul>
+            {/* Қатарлар: бір қатардағы фотолар бір биіктікте, пропорция сақталады.
+                Фото аз болса қатар тарылады — биіктігі ~340px-ден аспайды. */}
+            <div className="mx-auto mt-[clamp(1.75rem,4vh,2.5rem)] flex max-w-[1080px] flex-col gap-4">
+              {toRows(images.slice(0, g.visibleCount).map((img, i) => ({ img, i })), 3).map((row, r) => {
+                const sum = row.reduce((acc, { img }) => acc + photoRatio(img), 0);
+                return (
+                  <ul key={r} className="mx-auto flex w-full gap-4" style={{ maxWidth: `${Math.round(sum * 340)}px` }}>
+                    {row.map(({ img, i }) => (
+                      <li key={img.src} className="min-w-0" style={{ flex: `${photoRatio(img)} 1 0%` }}>
+                        <Reveal delay={(i % 3) * 0.06} y={18}>
+                          <button
+                            type="button"
+                            onClick={() => g.open(i)}
+                            className={`group relative block w-full overflow-hidden bg-sky-soft shadow-soft ${radii[i % radii.length]}`}
+                            style={{ aspectRatio: photoRatio(img) }}
+                            aria-label={`${galleryAlt(i)} — үлкейту`}
+                          >
+                            <Image
+                              src={img.src}
+                              alt={galleryAlt(i)}
+                              fill
+                              sizes="(min-width: 1280px) 460px, 36vw"
+                              className="object-cover object-[50%_40%] transition-transform duration-700 group-hover:scale-[1.06]"
+                            />
+                            <span className="absolute inset-0 bg-gradient-to-t from-ink/45 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                            <span className="absolute right-4 bottom-4 grid size-10 place-items-center rounded-full bg-white/95 text-sky-deep shadow-soft transition duration-300 group-hover:scale-110">
+                              <ZoomIn className="size-5" aria-hidden="true" />
+                            </span>
+                          </button>
+                        </Reveal>
+                      </li>
+                    ))}
+                  </ul>
+                );
+              })}
+            </div>
 
             {g.hasMore ? (
               <div className="mt-7 flex justify-center">
