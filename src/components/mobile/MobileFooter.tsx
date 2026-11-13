@@ -1,5 +1,5 @@
-import { Clock, MapPin, Phone } from "lucide-react";
-import { footer, kindergarten, whatsappUrl } from "@/data/kindergarten";
+import { Clock, FileText, MapPin, Phone } from "lucide-react";
+import { documents, footer, kindergarten, whatsappUrl } from "@/data/kindergarten";
 import type { SiteImage } from "@/lib/images";
 import { Logo } from "@/components/shared/Logo";
 import { Star, Wave } from "@/components/shared/DecorativeShapes";
@@ -36,6 +36,12 @@ export function MobileFooter({ logo }: { logo: SiteImage | null }) {
             <span>
               {kindergarten.hours} · {kindergarten.ages}
             </span>
+          </li>
+          <li className="flex gap-3">
+            <FileText className="mt-0.5 size-5 shrink-0 text-sky" aria-hidden="true" />
+            <a href="#documents" className="font-bold underline decoration-white/30 underline-offset-4">
+              {documents.title}
+            </a>
           </li>
         </ul>
 

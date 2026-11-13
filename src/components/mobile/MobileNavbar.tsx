@@ -2,7 +2,7 @@
 
 import { AnimatePresence } from "motion/react";
 import * as m from "motion/react-m";
-import { Heart, House, Images, Menu, Phone, Puzzle, Users, UtensilsCrossed, X, type LucideIcon } from "lucide-react";
+import { FileText, Heart, House, Images, Menu, Phone, Puzzle, Users, UtensilsCrossed, X, type LucideIcon } from "lucide-react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { kindergarten, navItems, whatsappUrl, type SectionId } from "@/data/kindergarten";
 import type { SiteImage } from "@/lib/images";
@@ -17,6 +17,7 @@ const icons: Record<SectionId, LucideIcon> = {
   nutrition: UtensilsCrossed,
   activities: Puzzle,
   gallery: Images,
+  documents: FileText,
   contacts: Phone,
 };
 // +1: «Басты бет» алынғаннан кейін де әр пункт өз бұрынғы түсін сақтайды

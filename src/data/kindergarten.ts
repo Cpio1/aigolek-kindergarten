@@ -41,6 +41,7 @@ export const sections = [
   { id: "nutrition", label: "Тамақтану" },
   { id: "activities", label: "Үйірмелер" },
   { id: "gallery", label: "Галерея" },
+  { id: "documents", label: "Құжаттар" },
   { id: "contacts", label: "Байланыс" },
 ] as const;
 
@@ -157,6 +158,25 @@ export const gallery = {
   less: "Жасыру",
   placeholder: "Фото жақында қосылады",
 };
+
+/** Құжаттар бөлімі. Сілтеме Google Drive папкасына апарады. */
+export const documents = {
+  eyebrow: "Құжаттар",
+  title: "Құжаттар",
+  subtitle: "Балабақшаның ресми құжаттары бір жерде",
+  headline: "Ашық әрі қолжетімді ақпарат",
+  text: "Балабақшаның нормативтік құжаттары, ережелері мен ата-аналарға арналған қажетті ақпаратпен Google Drive папкасы арқылы танысуға болады.",
+  items: [
+    { key: "rules", label: "Ережелер" },
+    { key: "orders", label: "Бұйрықтар" },
+    { key: "parents", label: "Ата-аналарға" },
+  ],
+  cta: "Құжаттарды қарау",
+  note: "Папка жаңа бетте ашылады",
+  driveUrl: "https://drive.google.com/drive/folders/1vSVLtqnzIKfP01cjRt3rrnSv4GnSfHYO",
+} as const;
+
+export type DocumentKey = (typeof documents.items)[number]["key"];
 
 export const contacts = {
   eyebrow: "Байланыс",

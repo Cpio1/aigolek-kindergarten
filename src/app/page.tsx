@@ -12,6 +12,7 @@ import { DesktopGroups } from "@/components/desktop/DesktopGroups";
 import { DesktopNutrition } from "@/components/desktop/DesktopNutrition";
 import { DesktopActivities } from "@/components/desktop/DesktopActivities";
 import { DesktopGallery } from "@/components/desktop/DesktopGallery";
+import { DesktopDocuments } from "@/components/desktop/DesktopDocuments";
 import { DesktopContacts } from "@/components/desktop/DesktopContacts";
 import { DesktopFooter } from "@/components/desktop/DesktopFooter";
 
@@ -22,6 +23,7 @@ import { MobileGroups } from "@/components/mobile/MobileGroups";
 import { MobileNutrition } from "@/components/mobile/MobileNutrition";
 import { MobileActivities } from "@/components/mobile/MobileActivities";
 import { MobileGallery } from "@/components/mobile/MobileGallery";
+import { MobileDocuments } from "@/components/mobile/MobileDocuments";
 import { MobileContacts } from "@/components/mobile/MobileContacts";
 import { MobileFooter } from "@/components/mobile/MobileFooter";
 
@@ -83,6 +85,7 @@ export default function Home() {
           mobile={<MobileActivities robotics={images.robotics} speech={images.speech} />}
         />
         <Section id="gallery" desktop={<DesktopGallery images={images.gallery} />} mobile={<MobileGallery images={images.gallery} />} />
+        <Section id="documents" desktop={<DesktopDocuments />} mobile={<MobileDocuments />} />
         <Section id="contacts" desktop={<DesktopContacts />} mobile={<MobileContacts />} />
       </main>
 
